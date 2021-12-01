@@ -3,21 +3,21 @@ import { Character } from '../../interfaces/character.interface';
 import { HogwartsService } from '../../services/hogwarts.service';
 
 @Component({
-  selector: 'app-students',
-  templateUrl: './students.component.html',
-  styleUrls: ['./students.component.scss']
+  selector: 'app-staff',
+  templateUrl: './staff.component.html',
+  styleUrls: ['./staff.component.scss']
 })
-export class StudentsComponent implements OnInit {
+export class StaffComponent implements OnInit {
 
-  listOfStudents: Character[] = [];
+  listOfStaff: Character[] = [];
 
   constructor( private hogwartsService: HogwartsService ) { }
 
   ngOnInit(): void {
 
-    this.hogwartsService.getAllStudents()
+    this.hogwartsService.getAllStaff()
       .subscribe ( res => {
-        this.listOfStudents = res;
+        this.listOfStaff = res;
       } )
   }
 

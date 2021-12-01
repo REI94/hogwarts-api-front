@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HogwartsService } from '../../services/hogwarts.service';
+import { Character } from '../../interfaces/character.interface';
 
 @Component({
   selector: 'app-characters',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CharactersComponent implements OnInit {
 
-  constructor() { }
+  listOfCharacters: Character[] = [];
+
+  constructor( private hogwartsService: HogwartsService ) { }
 
   ngOnInit(): void {
+
+    this.hogwartsService.getAllCharacters('gryffindor')
+      .subscribe ( res => {
+        this.listOfCharacters = res;
+      } )
   }
 
 }

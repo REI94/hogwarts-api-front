@@ -1,24 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ComponentsModule } from '../components/components.module';
+
+//Pages components
 import { CharactersComponent } from './characters/characters.component';
 import { StudentsComponent } from './students/students.component';
-import { TeachersComponent } from './teachers/teachers.component';
-
+import { StaffComponent } from './staff/staff.component';
 
 
 @NgModule({
   declarations: [
     CharactersComponent,
     StudentsComponent,
-    TeachersComponent
+    StaffComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ComponentsModule
   ],
   exports: [
     CharactersComponent,
     StudentsComponent,
-    TeachersComponent
+    StaffComponent
   ]
 })
 export class PagesModule { }

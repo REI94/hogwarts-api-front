@@ -4,19 +4,22 @@ import { RouterModule } from '@angular/router';
 
 //Components
 import { NavbarComponent } from './navbar/navbar.component';
+import { TableComponent } from './table/table.component';
 
 
 
 @NgModule({
   declarations: [
-    NavbarComponent
+    NavbarComponent,
+    TableComponent
   ],
   imports: [
     CommonModule,
     RouterModule
   ],
   exports: [
-    NavbarComponent
+    NavbarComponent,
+    TableComponent
   ]
 })
 export class ComponentsModule { }
