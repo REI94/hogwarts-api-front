@@ -15,7 +15,14 @@ export class CharactersComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.hogwartsService.getAllCharacters('gryffindor')
+    this.selectHouse();
+  }
+
+  selectHouse() {
+
+    const house_selected = ((document.getElementById("house-select") as HTMLInputElement).value);
+
+    this.hogwartsService.getAllCharacters( house_selected )
       .subscribe ( res => {
         this.listOfCharacters = res;
       } )

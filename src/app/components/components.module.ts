@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 //Components
 import { NavbarComponent } from './navbar/navbar.component';
 import { TableComponent } from './table/table.component';
+import { PipesModule } from '../pipes/pipes.module';
 
 
 
@@ -15,7 +16,8 @@ import { TableComponent } from './table/table.component';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    PipesModule
   ],
   exports: [
     NavbarComponent,
