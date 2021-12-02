@@ -19,8 +19,14 @@ export class RequestsComponent implements OnInit {
 
   loadRequests() {
 
-    // const newStudents = JSON.parse(localStorage.getItem("students"));
-    // this.listOfRequests.push(newStudents);
-    this.listOfRequests = JSON.parse(localStorage.getItem('requests'));
+    let preList = JSON.parse(localStorage.getItem('requests'));
+
+    preList.forEach(character => {
+
+      const base64textString = character.image;
+      character.image = "data:image/png;base64," + base64textString;
+    });
+
+    this.listOfRequests = preList;
   }
 }
