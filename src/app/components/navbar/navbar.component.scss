@@ -1,0 +1,17 @@
+.navbar {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  height: 50px !important;
+
+  a {
+    border-bottom: 3px solid transparent;
+  }
+
+  a.active {
+    border-bottom: 3px solid #f27c2d;
+  }
+
+  .nav-link {
+    padding: 0.7rem 1rem !important;
+  }
+}

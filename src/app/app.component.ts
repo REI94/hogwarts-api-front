@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Hogwarts';
+  bg: string = '../assets/img/diner-01.png'
 }

@@ -1,11 +1,16 @@
 <div class="container mt-5">
+  <div class="row">
+    <div class="col-auto">
+      <select id="house-select" (change)="selectHouse()" class="form-select" aria-label="Default select example">
+        <option value="gryffindor" selected>Gryffindor</option>
+        <option value="slytherin">Slytherin</option>
+        <option value="ravenclaw">Ravenclaw</option>
+        <option value="hufflepuff">Hufflepuff</option>
+      </select>
+    </div>
+  </div>
+</div>
 
-  <select id="house-select" (change)="selectHouse()" class="form-select" aria-label="Default select example">
-    <option value="gryffindor" selected>Gryffindor</option>
-    <option value="slytherin">Slytherin</option>
-    <option value="ravenclaw">Ravenclaw</option>
-    <option value="hufflepuff">Hufflepuff</option>
-  </select>
-
+<div class="container mt-4">
   <app-table [tableCharacters]="listOfCharacters"></app-table>
 </div>

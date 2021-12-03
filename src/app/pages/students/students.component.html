@@ -1,6 +1,15 @@
-<div *ngIf="route.children.length === 0" class="container mt-5">
-  <button routerLink="/students/singup" type="button" class="btn btn-outline-success">Inscribirse</button>
-  <button routerLink="/students/requests" type="button" class="btn btn-outline-warning">Ver solicitudes</button>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-auto">
+      <button routerLink="/students/singup" type="button" class="btn btn-success">Singup</button>
+    </div>
+    <div class="col-auto">
+      <button routerLink="/students/requests" type="button" class="btn btn-warning">View Requests</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="route.children.length === 0" class="container mt-4">
   <app-table [tableCharacters]="listOfStudents"></app-table>
 </div>
 
