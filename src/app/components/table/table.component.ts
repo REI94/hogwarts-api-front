@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { Character } from '../../interfaces/character.interface';
 
 @Component({
@@ -10,9 +10,38 @@ export class TableComponent implements OnInit {
 
   @Input() tableCharacters: Character[];
 
+  //"page" lets jump from 5 to 5 results.
+  public page: number = 0;
+
+  //"pageCount" controls the current page number. Prevents pagination from jumping to an empty page.
+  public pageCount: number = 1;
+
+  //"finalPage" It is used to hide the "Next" button when the user reaches the last page of the table.
+  public finalPage: number = 1;
+
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+
+  ngOnChanges(changes: SimpleChanges) {
+
+    //Detects if an array is received through the input and counts which is the last page.
+    this.finalPage = Math.ceil(changes.tableCharacters.currentValue.length / 5);
   }
 
+  nextPage() {
+
+    if( this.pageCount < this.finalPage ) {
+      this.page += 5;
+      this.pageCount++;
+    }
+  }
+
+  prevPage() {
+
+    if( this.page > 0 ) {
+      this.page -= 5;
+      this.pageCount--;
+    }
+  }
 }

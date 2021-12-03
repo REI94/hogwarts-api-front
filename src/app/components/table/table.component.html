@@ -8,7 +8,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let character of tableCharacters">
+    <tr *ngFor="let character of tableCharacters | filter:page">
       <td>{{ character.name }}</td>
       <td>{{ character.patronus }}</td>
       <td>{{ character.age }}</td>
@@ -16,3 +16,14 @@
     </tr>
   </tbody>
 </table>
+
+<div class="container mt-4 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-auto" *ngIf="pageCount != 1">
+      <button type="button" class="btn btn-warning" (click)="prevPage()">Previous</button>
+    </div>
+    <div class="col-auto" *ngIf="pageCount != finalPage">
+      <button type="button" class="btn btn-warning" (click)="nextPage()">Next</button>
+    </div>
+  </div>
+</div>
