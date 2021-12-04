@@ -1,28 +1,47 @@
-<table class="table table-striped table-dark">
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Patronus</th>
-      <th scope="col">Age</th>
-      <th scope="col">Image</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let character of tableCharacters | filter:page">
-      <td>{{ character.name }}</td>
-      <td>{{ character.patronus }}</td>
-      <td>{{ character.age }}</td>
-      <td><img [src]="character.image | photo" [alt]="character.name"></td>
-    </tr>
-  </tbody>
-</table>
-
 <div class="container mt-4 mb-5">
+  <div class="row">
+    <div class="col-auto">
+      <form class="form-inline my-2 my-lg-0">
+        <div class="input-group">
+          <input class="form-control mr-sm-2"
+                 type="search"
+                 #keywordFilter
+                 (keyup)="onKeywordFilter( keywordFilter.value )"
+                 placeholder="Filter by keyword"
+                 aria-label="Filter"
+          >
+          <button class="btn btn-warning my-2 my-sm-0" type="button" (click)="onKeywordFilter( keywordFilter.value )">Filter</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-12">
+      <table class="table table-striped table-dark">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Patronus</th>
+            <th scope="col">Age</th>
+            <th scope="col">Image</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let character of tableCharacters | filter:page:keyword">
+            <td>{{ character.name }}</td>
+            <td>{{ character.patronus }}</td>
+            <td>{{ character.age }}</td>
+            <td><img [src]="character.image | photo" [alt]="character.name"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
   <div class="row justify-content-center">
-    <div class="col-auto" *ngIf="pageCount != 1">
+    <div class="col-auto" *ngIf="page != 0">
       <button type="button" class="btn btn-warning" (click)="prevPage()">Previous</button>
     </div>
-    <div class="col-auto" *ngIf="pageCount != finalPage">
+    <div class="col-auto" *ngIf="(tableCharacters | filter:page:keyword).length === 5">
       <button type="button" class="btn btn-warning" (click)="nextPage()">Next</button>
     </div>
   </div>

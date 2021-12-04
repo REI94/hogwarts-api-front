@@ -6,9 +6,14 @@ import { Character } from '../interfaces/character.interface';
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(characters: Character[], page: number = 0): Character[] {
+  transform(characters: Character[], page: number = 0, keyword: string = ''): Character[] {
 
-    return characters.slice( page, page + 5 );
+    if( keyword.length === 0 )
+      return characters.slice( page, page + 5 );
+
+    const filteredCharacters = characters.filter( charact => charact.name.toLocaleLowerCase().includes( keyword.trim().toLocaleLowerCase() ) );
+
+    return filteredCharacters.slice( page, page + 5 );
   }
 
 }

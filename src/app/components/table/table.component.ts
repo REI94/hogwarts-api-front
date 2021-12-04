@@ -19,6 +19,8 @@ export class TableComponent implements OnInit {
   //"finalPage" It is used to hide the "Next" button when the user reaches the last page of the table.
   public finalPage: number = 1;
 
+  public keyword: string = '';
+
   constructor() { }
 
   ngOnInit(): void { }
@@ -43,5 +45,12 @@ export class TableComponent implements OnInit {
       this.page -= 5;
       this.pageCount--;
     }
+  }
+
+  onKeywordFilter( keyword: string ) {
+
+    this.page = 0;
+    console.log(this.page);
+    this.keyword = keyword;
   }
 }
