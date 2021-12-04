@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HogwartsService } from '../../services/hogwarts.service';
 import { Character } from '../../interfaces/character.interface';
 
@@ -15,17 +15,15 @@ export class CharactersComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.selectHouse();
+    this.onChangeHouse();
   }
 
-  selectHouse() {
+  onChangeHouse(house: string = 'gryffindor') {
 
-    const house_selected = ((document.getElementById("house-select") as HTMLInputElement).value);
-
-    this.hogwartsService.getAllCharacters( house_selected )
+    this.hogwartsService.getAllCharacters( house )
       .subscribe ( res => {
         this.listOfCharacters = res;
-      } )
+      })
   }
 
 }

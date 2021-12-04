@@ -1,4 +1,6 @@
-import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { Component, OnInit, Input, SimpleChanges, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Character } from '../../interfaces/character.interface';
 
 @Component({
@@ -9,6 +11,8 @@ import { Character } from '../../interfaces/character.interface';
 export class TableComponent implements OnInit {
 
   @Input() tableCharacters: Character[];
+
+  @Output() changeHouse: EventEmitter<string>;
 
   //"page" lets jump from 5 to 5 results.
   public page: number = 0;
@@ -21,9 +25,18 @@ export class TableComponent implements OnInit {
 
   public keyword: string = '';
 
-  constructor() { }
+  public showHouseSelect = false;
 
-  ngOnInit(): void { }
+  constructor( private router: Router ) {
+
+    this.changeHouse = new EventEmitter();
+  }
+
+  ngOnInit(): void {
+
+    if(this.router.url === '/characters')
+      this.showHouseSelect = true;
+  }
 
   ngOnChanges(changes: SimpleChanges) {
 
@@ -52,5 +65,15 @@ export class TableComponent implements OnInit {
     this.page = 0;
     console.log(this.page);
     this.keyword = keyword;
+  }
+
+  onSelectHouse() {
+
+    const house_selected = ((document.getElementById("house-select") as HTMLInputElement).value);
+
+    this.changeHouse.emit(house_selected);
+
+    this.page = 0;
+    this.pageCount = 1;
   }
 }
