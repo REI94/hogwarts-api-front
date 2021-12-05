@@ -1,17 +1,17 @@
 export interface CharactersResponse {
     name:             string;
     alternate_names:  string[];
-    species:          Species;
+    species:          string;
     gender:           Gender;
     house:            House;
-    dateOfBirth:      DateOfBirth;
+    dateOfBirth:      string;
     yearOfBirth:      number | string;
     wizard:           boolean;
-    ancestry:         Ancestry;
-    eyeColour:        EyeColour;
-    hairColour:       HairColour;
+    ancestry:         string;
+    eyeColour:        string;
+    hairColour:       string;
     wand:             Wand;
-    patronus:         Patronus;
+    patronus:         string;
     hogwartsStudent:  boolean;
     hogwartsStaff:    boolean;
     actor:            string;
@@ -20,46 +20,9 @@ export interface CharactersResponse {
     image:            string;
 }
 
-export enum Ancestry {
-    Empty = "",
-    HalfBlood = "half-blood",
-    Muggleborn = "muggleborn",
-    PureBlood = "pure-blood",
-}
-
-export enum DateOfBirth {
-    Empty = "",
-    The01031980 = "01-03-1980",
-    The05061980 = "05-06-1980",
-    The11081981 = "11-08-1981",
-    The13021981 = "13-02-1981",
-    The19091979 = "19-09-1979",
-    The30071980 = "30-07-1980",
-    The31071980 = "31-07-1980",
-}
-
-export enum EyeColour {
-    Black = "black",
-    Blue = "blue",
-    Brown = "brown",
-    Empty = "",
-    Green = "green",
-    Grey = "grey",
-}
-
 export enum Gender {
     Female = "female",
     Male = "male",
-}
-
-export enum HairColour {
-    Black = "black",
-    Blond = "blond",
-    Blonde = "blonde",
-    Brown = "brown",
-    Empty = "",
-    Red = "red",
-    Sandy = "sandy",
 }
 
 export enum House {
@@ -70,21 +33,6 @@ export enum House {
     Ravenclaw = "Ravenclaw",
     Slytherin = "Slytherin",
     Slythetin = "Slythetin",
-}
-
-export enum Patronus {
-    Boar = "boar",
-    Empty = "",
-    Hare = "hare",
-    Horse = "horse",
-    JackRussellTerrier = "Jack Russell terrier",
-    Otter = "otter",
-    Stag = "stag",
-    Swan = "swan",
-}
-
-export enum Species {
-    Human = "human",
 }
 
 export interface Wand {
@@ -112,7 +60,7 @@ export enum Wood {
     Yew = "yew",
 }
 
-//interface created to obtain only the attributes requested in the challenge
+//Interface created to obtain only the attributes requested in the challenge
 export interface Character {
     name: string;
     patronus: string;

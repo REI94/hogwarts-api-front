@@ -63,7 +63,6 @@ export class TableComponent implements OnInit {
   onKeywordFilter( keyword: string ) {
 
     this.page = 0;
-    console.log(this.page);
     this.keyword = keyword;
   }
 
