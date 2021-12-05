@@ -1,11 +1,16 @@
-export function getAge(dateString: Date) {
+export function getAge(dateString: string) {
 
-  let today = new Date();
-  let birthDate = new Date(dateString);
-  let age = today.getFullYear() - birthDate.getFullYear();
-  let m = today.getMonth() - birthDate.getMonth();
+  //It takes today's date
+  const today = new Date();
 
-  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+  //Now the string with the format days-month-year is separated into an array of 3 values.
+  const dayMonthYear = dateString.split("-");
+
+  let age = today.getFullYear() - Number(dayMonthYear[2]);
+  let m = today.getMonth() - Number(dayMonthYear[1]);
+
+  //Count of days
+  if (m < 0 || (m === 0 && today.getDate() < Number(dayMonthYear[0]))) {
       age--;
   }
 

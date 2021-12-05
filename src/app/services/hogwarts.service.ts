@@ -41,8 +41,7 @@ export class HogwartsService {
 
     const charactersList: Character[] = res.map( character => {
 
-      const date = new Date(character.dateOfBirth);
-      const age = getAge(date);
+      const age = getAge(character.dateOfBirth);
 
       return {
         name: character.name,

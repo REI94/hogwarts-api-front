@@ -43,7 +43,7 @@
           <tr *ngFor="let character of tableCharacters | filter:page:keyword">
             <td>{{ character.name }}</td>
             <td>{{ character.patronus }}</td>
-            <td>{{ character.age }}</td>
+            <td>{{ character.age | noAge }}</td>
             <td><img [src]="character.image | photo" [alt]="character.name"></td>
           </tr>
         </tbody>
