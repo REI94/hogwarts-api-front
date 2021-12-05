@@ -24,7 +24,9 @@ export class RequestsComponent implements OnInit {
     preList.forEach(character => {
 
       const base64textString = character.image;
-      character.image = "data:image/png;base64," + base64textString;
+
+      if( base64textString.length !== 0 )
+        character.image = "data:image/png;base64," + base64textString;
     });
 
     this.listOfRequests = preList;

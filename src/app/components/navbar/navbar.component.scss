@@ -1,3 +1,5 @@
+@import "../../../styles.scss";
+
 .navbar {
   padding-top: 0 !important;
   padding-bottom: 0 !important;
@@ -8,7 +10,8 @@
   }
 
   a.active {
-    border-bottom: 3px solid #f27c2d;
+    border-bottom: 3px solid $bordersColor;
+    color: $bordersColor;
   }
 
   .nav-link {

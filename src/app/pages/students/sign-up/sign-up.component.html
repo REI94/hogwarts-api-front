@@ -1,0 +1,65 @@
+<form [formGroup]="form" (ngSubmit)="prepareRequest()" class="mt-5">
+  <div class="container mb-5">
+    <div class="row justify-content-center">
+      <div class="col-6 div-left d-none d-md-block">
+        <img src="../../../../assets/img/hogwarts-letters.jpg" alt="" class="side-img">
+        <div class="div-text">
+          <h2>Want to learn magic at Hogwarts?</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, aspernatur officiis dolores, hic, consectetur perferendis magni blanditiis ratione suscipit nobis tenetur. Inventore suscipit doloribus labore perferendis veniam a excepturi provident.</p>
+        </div>
+      </div>
+      <div class="col-6 form-col">
+        <div class="row">
+          <h1 class="mt-4 mb-5">Sign Up</h1>
+          <div class="col-12 mt-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text"
+                   maxlength="50"
+                   id="name"
+                   formControlName="name"
+                   class="form-control"
+                   style="max-width: 300px"
+            >
+            <small *ngIf="validInput('name')" class="text-danger">You must enter your name</small>
+          </div>
+          <div class="col-12 mt-3">
+            <label for="patronus" class="form-label">Patronus</label>
+            <input type="text"
+                   maxlength="50"
+                   id="patronus"
+                   formControlName="patronus"
+                   class="form-control"
+                   style="max-width: 300px"
+            >
+            <small *ngIf="validInput('patronus')" class="text-danger">You must enter your patronus</small>
+          </div>
+          <div class="col-12 mt-3">
+            <label for="age" class="form-label">Age</label>
+            <input type="number"
+                   min="1"
+                   id="age"
+                   formControlName="age"
+                   class="form-control"
+                   style="max-width: 100px"
+            >
+            <small *ngIf="validInput('age')" class="text-danger">Age must be greater than zero</small>
+          </div>
+          <div class="col-12 mt-3">
+            <label for="image" class="form-label">Image</label>
+            <input type="file"
+                   accept=".png, .jpg, .jpeg"
+                   id="image"
+                   formControlName="image"
+                   class="form-control"
+            >
+          </div>
+        </div>
+        <div class="row mt-5 mb-4">
+          <div class="col-auto">
+            <button type="submit" class="btn btn-success">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

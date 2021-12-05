@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
 import { CharactersComponent } from './characters/characters.component';
 import { StudentsComponent } from './students/students.component';
 import { StaffComponent } from './staff/staff.component';
-import { SingupComponent } from './students/singup/singup.component';
+import { SignUpComponent } from './students/sign-up/sign-up.component';
 import { RequestsComponent } from './students/requests/requests.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -17,7 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CharactersComponent,
     StudentsComponent,
     StaffComponent,
-    SingupComponent,
+    SignUpComponent,
     RequestsComponent
   ],
   imports: [
@@ -30,7 +30,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CharactersComponent,
     StudentsComponent,
     StaffComponent,
-    SingupComponent
+    SignUpComponent
   ]
 })
 export class PagesModule { }

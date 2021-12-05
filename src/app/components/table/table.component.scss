@@ -1,7 +1,15 @@
+@import "../../../styles.scss";
+
+.table-container {
+  box-shadow: 0px 0px 10px 3px #000000;
+  border-radius: 10px;
+}
+
 table {
   vertical-align: middle;
   text-align: center;
   padding-top: 0 !important;
+  margin-bottom: 0 !important;
 
   //border: 1px solid #850404 !important;
   border-radius: 8px !important;
@@ -10,7 +18,7 @@ table {
   margin-left: auto;
 
   tbody {
-    border-top: 2px solid #f27c2d;
+    border-top: 2px solid $bordersColor;
   }
 
   img {
@@ -26,7 +34,25 @@ table {
   padding-bottom: 10px;
   //background: #e6e9ec;
   background: #212529;
-  border-bottom: 2px solid #f27c2d;
+  border-bottom: 2px solid $bordersColor;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
+  align-items: center;
+}
+
+.pagination-bar {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background: #212529;
+  border-top: 2px solid $bordersColor;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.select-group {
+  background-color: #32373b;
+  color: white;
+  font-weight: 500;
+  padding: 5px 0;
+  border-radius: 5px;
 }

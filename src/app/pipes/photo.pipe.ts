@@ -7,7 +7,7 @@ export class PhotoPipe implements PipeTransform {
 
   transform( photo: string ): string {
 
-    if( photo ) {
+    if( photo.length !== 0 ) {
       return photo;
     }
     else {

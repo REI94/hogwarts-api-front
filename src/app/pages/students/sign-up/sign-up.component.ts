@@ -1,18 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Character } from '../../../interfaces/character.interface';
 
 @Component({
-  selector: 'app-singup',
-  templateUrl: './singup.component.html',
-  styleUrls: ['./singup.component.scss']
+  selector: 'app-sign-up',
+  templateUrl: './sign-up.component.html',
+  styleUrls: ['./sign-up.component.scss']
 })
-export class SingupComponent implements OnInit {
+export class SignUpComponent implements OnInit {
 
   form: FormGroup;
   listOfRequests: Character[] = [];
 
-  constructor( private fb: FormBuilder ) {
+  constructor( private fb: FormBuilder, private router: Router ) {
 
     this.createForm();
   }
@@ -23,23 +24,31 @@ export class SingupComponent implements OnInit {
   createForm() {
 
     this.form = this.fb.group({
-      name: ['', Validators.required],
-      patronus: ['', Validators.required],
-      age: ['', Validators.required],
-      image: ['']
+      name: ['', [Validators.required, Validators.maxLength(50)]],
+      patronus: ['', [Validators.required, Validators.maxLength(50)]],
+      age: ['', [Validators.required, Validators.min(1)]],
+      image: ['']  //If the user does not load an image, another one is assigned by default
     });
+  }
+
+  public validInput(nameInput: string) {
+
+    return this.form['controls'][nameInput].invalid && this.form['controls'][nameInput].touched;
   }
 
   prepareRequest() {
 
-    //Get image file from HTML
-    const imageFile = ((document.getElementById("image") as HTMLInputElement).files);
+    if(this.form.valid) {
 
-    //Convert the image to a valid format to save it
-    this.handleFileSelect(imageFile);
+      //Get image file from HTML
+      const imageFile = ((document.getElementById("image") as HTMLInputElement).files);
+
+      //Convert the image to a valid format to save it
+      this.handleFileSelect(imageFile);
+    }
   }
 
-  saveRequest(base64textString: string) {
+  saveRequest(base64textString: string = '') {
 
     const newStudent = {
       name: this.form['controls'].name.value,
@@ -54,6 +63,9 @@ export class SingupComponent implements OnInit {
     this.listOfRequests.push(newStudent);
 
     localStorage.setItem("requests", JSON.stringify( this.listOfRequests ));
+
+    this.form.reset();
+    this.router.navigateByUrl('/students/requests');
   }
 
   loadRequests() {
@@ -71,6 +83,9 @@ export class SingupComponent implements OnInit {
         reader.onload = this._handleReaderLoaded.bind(this);
 
         reader.readAsBinaryString(file);
+    }
+    else {
+      this.saveRequest();
     }
   }
 

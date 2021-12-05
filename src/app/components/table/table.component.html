@@ -1,4 +1,4 @@
-<div class="container mt-4 mb-5">
+<div class="container table-container mt-4 mb-5">
   <div class="row filters-bar">
     <div class="col-auto">
       <form class="form-inline my-2 my-lg-0">
@@ -15,12 +15,17 @@
       </form>
     </div>
     <div class="col-auto" *ngIf="showHouseSelect">
-      <select id="house-select" (change)="onSelectHouse()" class="form-select" aria-label="Default select example">
-        <option value="gryffindor" selected>Gryffindor</option>
-        <option value="slytherin">Slytherin</option>
-        <option value="ravenclaw">Ravenclaw</option>
-        <option value="hufflepuff">Hufflepuff</option>
-      </select>
+      <div class="form-group row select-group">
+        <label for="house-select" class="col-auto col-form-label">House:</label>
+        <div class="col-auto">
+          <select id="house-select" (change)="onSelectHouse()" class="form-select" aria-label="Default select example">
+            <option value="gryffindor" selected>Gryffindor</option>
+            <option value="slytherin">Slytherin</option>
+            <option value="ravenclaw">Ravenclaw</option>
+            <option value="hufflepuff">Hufflepuff</option>
+          </select>
+        </div>
+      </div>
     </div>
   </div>
   <div class="row">
@@ -45,7 +50,7 @@
       </table>
     </div>
   </div>
-  <div class="row justify-content-center">
+  <div class="row pagination-bar justify-content-center">
     <div class="col-auto" *ngIf="page != 0">
       <button type="button" class="btn btn-warning" (click)="prevPage()">Previous</button>
     </div>
