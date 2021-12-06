@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HogwartsService } from '../../services/hogwarts.service';
 import { Character } from '../../interfaces/character.interface';
 

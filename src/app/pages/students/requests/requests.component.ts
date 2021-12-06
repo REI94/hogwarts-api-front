@@ -19,16 +19,19 @@ export class RequestsComponent implements OnInit {
 
   loadRequests() {
 
-    let preList = JSON.parse(localStorage.getItem('requests'));
+    if(this.listOfRequests){ //Avoid reading errors if a request has not yet been saved.
 
-    preList.forEach(character => {
+      let preList = JSON.parse(localStorage.getItem('requests'));
 
-      const base64textString = character.image;
+      preList.forEach(character => {
 
-      if( base64textString.length !== 0 )
-        character.image = "data:image/png;base64," + base64textString;
-    });
+        const base64textString = character.image;
 
-    this.listOfRequests = preList;
+        if( base64textString.length !== 0 )
+          character.image = "data:image/png;base64," + base64textString;
+      });
+
+      this.listOfRequests = preList;
+    }
   }
 }
