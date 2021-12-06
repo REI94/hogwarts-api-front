@@ -8,6 +8,7 @@ import { Character } from '../../../interfaces/character.interface';
 })
 export class RequestsComponent implements OnInit {
 
+  //List of characters that will be passed to the table component.
   listOfRequests: Character[] = [];
 
   constructor() { }

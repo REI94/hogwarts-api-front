@@ -13,6 +13,9 @@ export class HogwartsService {
 
   constructor( private http: HttpClient ) {  }
 
+  //As we are only interested in bringing 4 attributes of each character (name, patronus, age and image),
+  //the map operator is used to avoid bringing information that we do not need.
+
   getAllCharacters( house: string ) {
 
     return this.http.get<CharactersResponse[]>(`${this.url}/house/${house}`)
@@ -37,10 +40,13 @@ export class HogwartsService {
               )
   }
 
+  //We get only the attributes that interest us.
   private transformCharactersResponse( res: CharactersResponse[] ) {
 
     const charactersList: Character[] = res.map( character => {
 
+      //We want to show the age of each character, but we only have the date of birth at hand,
+      //therefore, we will calculate the age by comparing that date with the current date.
       const age = getAge(character.dateOfBirth);
 
       return {

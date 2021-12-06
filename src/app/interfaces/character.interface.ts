@@ -1,3 +1,4 @@
+//Fuzzy interface to API responses.
 export interface CharactersResponse {
     name:             string;
     alternate_names:  string[];
@@ -60,7 +61,7 @@ export enum Wood {
     Yew = "yew",
 }
 
-//Interface created to obtain only the attributes requested in the challenge
+//Interface created to obtain only the attributes requested in the challenge.
 export interface Character {
     name: string;
     patronus: string;

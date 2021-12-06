@@ -31,25 +31,55 @@ export class SignUpComponent implements OnInit {
     });
   }
 
-  public validInput(nameInput: string) {
+  //This function receives the formControlName of form fields,
+  //and if any do not satisfy the validations specified in the FormBuilder then it returns false.
+  public invalidInput(nameInput: string) {
 
     return this.form['controls'][nameInput].invalid && this.form['controls'][nameInput].touched;
   }
 
+  //prepareRequest() first verifies that the form is valid and then
+  //obtains from the HTML the image that will be saved in the localStorage.
   prepareRequest() {
+
 
     if(this.form.valid) {
 
-      //Get image file from HTML
+      //Get image file from HTML.
       const imageFile = ((document.getElementById("image") as HTMLInputElement).files);
 
-      //Convert the image to a valid format to save it
+      //Convert the image to a valid format to save it.
       this.handleFileSelect(imageFile);
     }
   }
 
+  handleFileSelect(files){
+
+    const file = files[0];  //If multiple images were uploaded, it gets only the first one.
+
+    if (files && file) {  //If user uploaded an image, proceed to convert it.
+        let reader = new FileReader();
+
+        reader.onload = this._handleReaderLoaded.bind(this);
+
+        reader.readAsBinaryString(file);
+    }
+    else {  //Otherwise, save the form without assigning an image to the user.
+      this.saveRequest();
+    }
+  }
+
+  //Converts the image in Base64-encoded format to be able to save it in the localStorage as a string.
+  _handleReaderLoaded(readerEvt) {
+
+    const binaryString = readerEvt.target.result;
+    const base64textString = btoa(binaryString);
+    this.saveRequest(base64textString);
+  }
+
   saveRequest(base64textString: string = '') {
 
+    //Once everything is verified, the information of the form is saved in an object.
     const newStudent = {
       name: this.form['controls'].name.value,
       patronus: this.form['controls'].patronus.value,
@@ -57,6 +87,7 @@ export class SignUpComponent implements OnInit {
       image: base64textString
     }
 
+    //Gets the requests array saved in the localStorage (if it exists), and appends the new request in the last position.
     this.loadRequests();
 
     this.listOfRequests = this.listOfRequests || [];  //Check that it is an array to avoid problems when using .push()
@@ -64,6 +95,7 @@ export class SignUpComponent implements OnInit {
 
     localStorage.setItem("requests", JSON.stringify( this.listOfRequests ));
 
+    //Once the request is saved, the form is reset and user is redirected to the requests page.
     this.form.reset();
     this.router.navigateByUrl('/students/requests');
   }
@@ -71,28 +103,5 @@ export class SignUpComponent implements OnInit {
   loadRequests() {
 
     this.listOfRequests = JSON.parse(localStorage.getItem('requests'));
-  }
-
-  handleFileSelect(files){
-
-    const file = files[0];
-
-    if (files && file) {
-        let reader = new FileReader();
-
-        reader.onload = this._handleReaderLoaded.bind(this);
-
-        reader.readAsBinaryString(file);
-    }
-    else {
-      this.saveRequest();
-    }
-  }
-
-  _handleReaderLoaded(readerEvt) {
-
-    const binaryString = readerEvt.target.result;
-    const base64textString = btoa(binaryString);
-    this.saveRequest(base64textString);
   }
 }

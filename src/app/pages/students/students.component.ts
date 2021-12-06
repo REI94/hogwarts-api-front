@@ -10,6 +10,7 @@ import { HogwartsService } from '../../services/hogwarts.service';
 })
 export class StudentsComponent implements OnInit {
 
+  //List of characters that will be passed to the table component.
   listOfStudents: Character[] = [];
 
   constructor( private hogwartsService: HogwartsService, public route: ActivatedRoute ) { }

@@ -9,6 +9,7 @@ import { HogwartsService } from '../../services/hogwarts.service';
 })
 export class StaffComponent implements OnInit {
 
+  //List of characters that will be passed to the table component.
   listOfStaff: Character[] = [];
 
   constructor( private hogwartsService: HogwartsService ) { }

@@ -20,7 +20,7 @@
                    class="form-control"
                    style="max-width: 300px"
             >
-            <small *ngIf="validInput('name')" class="text-danger">You must enter your name</small>
+            <small *ngIf="invalidInput('name')" class="text-danger">You must enter your name</small>
           </div>
           <div class="col-12 mt-3">
             <label for="patronus" class="form-label">Patronus</label>
@@ -31,7 +31,7 @@
                    class="form-control"
                    style="max-width: 300px"
             >
-            <small *ngIf="validInput('patronus')" class="text-danger">You must enter your patronus</small>
+            <small *ngIf="invalidInput('patronus')" class="text-danger">You must enter your patronus</small>
           </div>
           <div class="col-12 mt-3">
             <label for="age" class="form-label">Age</label>
@@ -42,7 +42,7 @@
                    class="form-control"
                    style="max-width: 100px"
             >
-            <small *ngIf="validInput('age')" class="text-danger">Age must be greater than zero</small>
+            <small *ngIf="invalidInput('age')" class="text-danger">Age must be greater than zero</small>
           </div>
           <div class="col-12 mt-3">
             <label for="image" class="form-label">Image</label>

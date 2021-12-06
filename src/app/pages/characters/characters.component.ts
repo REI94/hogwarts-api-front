@@ -9,6 +9,7 @@ import { Character } from '../../interfaces/character.interface';
 })
 export class CharactersComponent implements OnInit {
 
+  //List of characters that will be passed to the table component.
   listOfCharacters: Character[] = [];
 
   constructor( private hogwartsService: HogwartsService ) { }
@@ -18,6 +19,7 @@ export class CharactersComponent implements OnInit {
     this.onChangeHouse();
   }
 
+  //The function requests the list of characters from the API sending the name of the house as a parameter.
   onChangeHouse(house: string = 'gryffindor') {
 
     this.hogwartsService.getAllCharacters( house )

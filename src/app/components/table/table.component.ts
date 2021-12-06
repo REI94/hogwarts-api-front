@@ -9,6 +9,8 @@ import { Character } from '../../interfaces/character.interface';
 })
 export class TableComponent implements OnInit {
 
+  //The data shown in the table is obtained in the pages components,
+  //and the table receives them through an Input.
   @Input() tableCharacters: Character[];
 
   @Output() changeHouse: EventEmitter<string>;
@@ -22,6 +24,7 @@ export class TableComponent implements OnInit {
   //"finalPage" It is used to hide the "Next" button when the user reaches the last page of the table.
   public finalPage: number = 1;
 
+  //Attribute that is passed to the filter pipe to show in the table only results with that match.
   public keyword: string = '';
 
   public showHouseSelect = false;
@@ -33,6 +36,7 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {
 
+    //Show Hogwart's house filter only if user is on character page.
     if(this.router.url === '/characters')
       this.showHouseSelect = true;
   }
@@ -43,6 +47,7 @@ export class TableComponent implements OnInit {
     this.finalPage = Math.ceil(changes.tableCharacters.currentValue.length / 5);
   }
 
+  //Show the following page of results in the table.
   nextPage() {
 
     if( this.pageCount < this.finalPage ) {
@@ -51,6 +56,7 @@ export class TableComponent implements OnInit {
     }
   }
 
+  //Show the previous page of results in the table.
   prevPage() {
 
     if( this.page > 0 ) {
@@ -65,6 +71,7 @@ export class TableComponent implements OnInit {
     this.keyword = keyword;
   }
 
+  //It alerts from the Table component to the Characters page if the user wants to change the house.
   onSelectHouse() {
 
     const house_selected = ((document.getElementById("house-select") as HTMLInputElement).value);
