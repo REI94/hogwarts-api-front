@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { RouterTestingModule } from "@angular/router/testing";
 import { RequestsComponent } from './requests.component';
+import { TableComponent } from '../../../components/table/table.component';
+import { PipesModule } from '../../../pipes/pipes.module';
 
 describe('RequestsComponent', () => {
   let component: RequestsComponent;
@@ -8,7 +11,14 @@ describe('RequestsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RequestsComponent ]
+      imports: [
+        RouterTestingModule,
+        PipesModule
+      ],
+      declarations: [
+        RequestsComponent,
+        TableComponent
+      ]
     })
     .compileComponents();
   }));

@@ -5,6 +5,8 @@ import { CharactersComponent } from './characters.component';
 //Additional imports
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from "@angular/router/testing";
+import { TableComponent } from '../../components/table/table.component';
+import { PipesModule } from '../../pipes/pipes.module';
 
 describe('CharactersComponent', () => {
   let component: CharactersComponent;
@@ -14,9 +16,13 @@ describe('CharactersComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         HttpClientTestingModule,
-        RouterTestingModule
+        RouterTestingModule,
+        PipesModule
       ],
-      declarations: [ CharactersComponent ]
+      declarations: [
+        CharactersComponent,
+        TableComponent
+      ]
     })
     .compileComponents();
   }));

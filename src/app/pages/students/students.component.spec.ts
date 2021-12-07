@@ -5,6 +5,8 @@ import { StudentsComponent } from './students.component';
 //Additional imports
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from "@angular/router/testing";
+import { TableComponent } from '../../components/table/table.component';
+import { PipesModule } from '../../pipes/pipes.module';
 
 describe('StudentsComponent', () => {
   let component: StudentsComponent;
@@ -14,9 +16,13 @@ describe('StudentsComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         HttpClientTestingModule,
-        RouterTestingModule
+        RouterTestingModule,
+        PipesModule
       ],
-      declarations: [ StudentsComponent ]
+      declarations: [
+        StudentsComponent,
+        TableComponent
+      ]
     })
     .compileComponents();
   }));
