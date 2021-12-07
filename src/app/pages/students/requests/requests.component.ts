@@ -20,7 +20,7 @@ export class RequestsComponent implements OnInit {
 
   loadRequests() {
 
-    if(this.listOfRequests){ //Avoid reading errors if a request has not yet been saved.
+    if(localStorage.getItem('requests') !== null){ //Avoid reading errors if a request has not yet been saved.
 
       let preList = JSON.parse(localStorage.getItem('requests'));
 
