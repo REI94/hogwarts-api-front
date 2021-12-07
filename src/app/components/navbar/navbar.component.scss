@@ -25,3 +25,9 @@
 .shadow-sm {
   box-shadow: 0 0.125rem 0.35rem rgb(0 0 0) !important;
 }
+
+@media (max-width: 991px) {
+  button.btn-success, button.btn-warning {
+      margin-bottom: 10px !important;
+  }
+}

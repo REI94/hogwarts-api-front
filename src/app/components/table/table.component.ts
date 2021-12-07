@@ -11,7 +11,7 @@ export class TableComponent implements OnInit {
 
   //The data shown in the table is obtained in the pages components,
   //and the table receives them through an Input.
-  @Input() tableCharacters: Character[];
+  @Input() tableCharacters: Character[] = [];
 
   @Output() changeHouse: EventEmitter<string>;
 
@@ -26,6 +26,9 @@ export class TableComponent implements OnInit {
 
   //Attribute that is passed to the filter pipe to show in the table only results with that match.
   public keyword: string = '';
+
+  //Only to show / hide loading icon
+  public loading = true;
 
   public showHouseSelect = false;
 
@@ -45,6 +48,9 @@ export class TableComponent implements OnInit {
 
     //Detects if an array is received through the input and counts which is the last page.
     this.finalPage = Math.ceil(changes.tableCharacters.currentValue.length / 5);
+
+    //Small delay for loading icon to be seen. It can be removed
+    setTimeout( () => { this.loading = false; }, 200);
   }
 
   //Show the following page of results in the table.

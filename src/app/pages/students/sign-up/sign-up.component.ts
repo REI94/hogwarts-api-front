@@ -42,6 +42,7 @@ export class SignUpComponent implements OnInit {
   //obtains from the HTML the image that will be saved in the localStorage.
   prepareRequest() {
 
+    this.form.markAllAsTouched();
 
     if(this.form.valid) {
 

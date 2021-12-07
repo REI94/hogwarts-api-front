@@ -1,5 +1,5 @@
 <form [formGroup]="form" (ngSubmit)="prepareRequest()" class="mt-5">
-  <div class="container mb-5">
+  <div class="container mb-5 dark-div">
     <div class="row justify-content-center">
       <div class="col-6 div-left d-none d-md-block">
         <img src="../../../../assets/img/hogwarts-letters.jpg" alt="" class="side-img">
@@ -20,7 +20,7 @@
                    class="form-control"
                    style="max-width: 300px"
             >
-            <small *ngIf="invalidInput('name')" class="text-danger">You must enter your name</small>
+            <small *ngIf="invalidInput('name')" class="text-danger">You must enter name</small>
           </div>
           <div class="col-12 mt-3">
             <label for="patronus" class="form-label">Patronus</label>
@@ -31,7 +31,7 @@
                    class="form-control"
                    style="max-width: 300px"
             >
-            <small *ngIf="invalidInput('patronus')" class="text-danger">You must enter your patronus</small>
+            <small *ngIf="invalidInput('patronus')" class="text-danger">You must enter patronus</small>
           </div>
           <div class="col-12 mt-3">
             <label for="age" class="form-label">Age</label>

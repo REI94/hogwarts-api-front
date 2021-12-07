@@ -1,4 +1,12 @@
-<div class="container table-container mt-5 mb-5">
+<div *ngIf="loading" class="container" style="margin-top: 150px">
+  <div class="row text-center">
+    <div class="col">
+      <i *ngIf="tableCharacters" class="fa fa-sync fa-spin fa-5x"></i>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!loading" class="container table-container mt-5 mb-5 animate__animated animate__fadeIn">
   <div class="row filters-bar">
     <div class="col-auto">
       <form class="form-inline my-2 my-lg-0">
