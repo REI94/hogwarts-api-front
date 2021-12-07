@@ -10,7 +10,7 @@ import { filter, map } from 'rxjs/operators';
 })
 export class AppComponent {
   title = 'Hogwarts';
-  bg: string = '../assets/img/diner-01.png'
+  bg: string = 'assets/img/diner-01.png'
 
   constructor(private titleService: Title, private router: Router, private activatedRoute: ActivatedRoute) {}
 

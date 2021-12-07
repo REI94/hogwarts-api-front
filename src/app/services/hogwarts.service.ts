@@ -9,7 +9,7 @@ import { getAge } from '../functions/age';
 })
 export class HogwartsService {
 
-  private url: string = 'http://hp-api.herokuapp.com/api/characters';
+  private url: string = 'https://hp-api.herokuapp.com/api/characters';
 
   constructor( private http: HttpClient ) {  }
 
