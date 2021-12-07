@@ -14,3 +14,9 @@ body {
   background-color: rgb(49, 49, 49);
   padding-top: 70px;
 }
+
+@media (max-width: 991px) {
+  div.main-div {
+    max-width: 97% !important;
+  }
+}

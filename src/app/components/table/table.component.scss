@@ -57,3 +57,14 @@ table {
 i {
   color: $bordersColor;
 }
+
+@media (max-width: 991px) {
+  .filters-bar {
+      justify-content: center !important;
+  }
+
+  button {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+}
